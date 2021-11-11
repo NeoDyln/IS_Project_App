@@ -1,0 +1,928 @@
+html, body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 320px;
+  width: 100%;
+  max-width: 1440px;
+  min-width: 320px;
+}
+
+*{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: normal;
+}
+
+body{
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+
+.main_bod{
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-image: url('../Images/background.jpg');
+  background-size: cover;
+}
+
+
+@media (min-width: 320px) and (max-width:425px) {
+
+
+
+
+  #display{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top: 0%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    color: #151965;
+
+  }
+  #logo_pos{
+    position: relative;
+    top: 5%;
+    padding: 0;
+    margin: 0 7px;
+    border: 0;
+    width: 30%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: absolute;
+    top: 10%;
+    margin: 0 0 0 33%;
+    width: 65%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: center;
+    color: #151965;
+  }
+
+
+
+  /*
+  Below is the main body section
+
+  */
+
+
+    #defaultView{
+      position: absolute;
+      top: 20.7%;
+      width: 90%;
+      height: 80%;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      display: block;
+
+
+    }
+
+  .defBtn{
+    margin: 4% 25%;
+    padding: 0;
+    border: 1px;
+    width: 50%;
+    height: 10%;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none
+    font-weight: bold;
+    color: #FDEFEF;
+  }
+
+    #Uni_Login_Form{
+      position: absolute;
+      top: 22.7%;
+      width: 90%;
+      display: none;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: left;
+      background-color: #F9F3DF;
+
+    }
+
+    #Uni_Create_Form{
+      position: absolute;
+      top: 26.7%;
+      width: 90%;
+      height: 60%;
+      overflow-y: scroll;
+      margin: 0 5%;
+      padding: 0 5px;
+      display: none;
+      border-radius: 4px;
+      background-color: #F9F3DF;
+    }
+
+    #Uni_Reset_Form{
+      position: absolute;
+      top: 22.7%;
+      width: 90%;
+      height: 60%;
+      margin: 4% 5%;
+      padding: 0 5px;
+      border-radius: 4px;
+      display: none;
+      background-color: #F9F3DF;
+    }
+    input[type=search], input[type=text], input[type=tel], input[type=email],input[type=password]{
+      margin: 1% 6% 1% 0;
+      width: 88%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=search]{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=submit]{
+      margin: 4% 25%;
+      padding: 0;
+      border: 0;
+      width: 50%;
+      height: 30px;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: lighter;
+      color: white;
+    }
+
+    .auth_form_message{
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      width: 100%;
+      text-align: left;
+    }
+
+    .auth_form_error{
+      margin: 2% 0;
+      padding: 0;
+      font-weight: lighter;
+      width: 95%;
+      text-align: left;
+    }
+
+  /*
+  Below is the footer section
+  */
+
+    #footer{
+      position: sticky;
+      top: 90%;
+      width: 100%;
+      height: 10%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+
+    }
+
+    #auth_back_btn{
+      margin: 4% 28%;
+      padding: 0;
+      border: 1px;
+      width: 44%;
+      height: 50%;
+      color: white;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: bold;
+
+    }
+
+    option{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      height: 10px;
+      text-decoration: none;
+      font-weight: lighter;
+      color: #151965;
+    }
+
+
+}
+
+
+@media (min-width: 425.1px) and (max-width:768px) {
+
+
+  *{
+    color: #151965;
+  }
+
+  #display{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top: 0%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+  }
+  #logo_pos{
+    position: relative;
+    top: 5%;
+    padding: 0;
+    margin: 0 05%;
+    border: 0;
+    width: 17%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: absolute;
+    top: 12%;
+    margin: 0 25%;
+    width: 50%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 38px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: center;
+    color: #151965;
+  }
+  #bodTextAbout{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    color: black;
+    height: 30%;
+  }
+
+  /*
+  Below is the main body section
+
+  */
+
+
+    #defaultView{
+      position: absolute;
+      top: 20.7%;
+      width: 28%;
+      height: 80%;
+      border-radius: 4px;
+      margin: 4% 0;
+      padding: 0 3%;
+      display: block;
+
+
+    }
+
+  .defBtn{
+    margin: 4% 25%;
+    padding: 0;
+    border: 1px;
+    width: 50%;
+    height: 10%;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none
+    font-weight: bold;
+    color: #FDEFEF;
+  }
+
+    #Uni_Login_Form{
+      position: absolute;
+      top: 24.7%;
+      right: 50px;
+      width: 45%;
+      display: none;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.84;
+      background-color: #F9F3DF;
+
+    }
+
+    #Uni_Create_Form{
+      position: absolute;
+      top: 20.7%;
+      right: 50px;
+      height: 400px;
+      width: 45%;
+      display: none;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.84;
+      background-color: #F9F3DF;
+      overflow-y: scroll;
+
+    }
+
+    #Uni_Reset_Form{
+      position: absolute;
+      top: 24.7%;
+      right: 50px;
+      width: 45%;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.84;
+      background-color: #F9F3DF;
+      display: block;
+    }
+    input[type=search], input[type=text], input[type=tel], input[type=email],input[type=password]{
+      margin: 1% 6% 1% 0;
+      width: 88%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=search]{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=submit]{
+      margin: 4% 30%;
+      padding: 0;
+      border: 0;
+      width: 40%;
+      height: 30px;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: lighter;
+      color: #FDEFEF;
+    }
+
+    .auth_form_message{
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      width: 100%;
+      text-align: center;
+    }
+
+    .auth_form_error{
+      margin: 2% 0;
+      padding: 0;
+      font-weight: lighter;
+      width: 95%;
+      text-align: center;
+    }
+
+  /*
+  Below is the footer section
+  */
+
+    #footer{
+      position: sticky;
+      top: 90%;
+      width: 100%;
+      height: 10%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+
+    }
+
+    #auth_back_btn{
+      margin: 4% 28%;
+      padding: 0;
+      border: 1px;
+      width: 44%;
+      height: 50%;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: bold;
+      color: white;
+
+    }
+
+    option{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      height: 10px;
+      text-decoration: none;
+      font-weight: lighter;
+      color: #151965;
+    }
+
+
+}
+
+@media (min-width:768.1px) and (max-width:1024px) {
+
+
+  *{
+    color: #151965;
+  }
+
+  #display{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top: 0%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+  }
+  #logo_pos{
+    position: relative;
+    top: 5%;
+    padding: 0;
+    margin: 0 05%;
+    border: 0;
+    width: 12%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: absolute;
+    top: 15%;
+    margin: 0 35%;
+    width: 50%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 38px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: center;
+    color: #151965;
+  }
+  #bodTextAbout{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    color: black;
+    height: 30%;
+  }
+
+  /*
+  Below is the main body section
+
+  */
+
+
+    #defaultView{
+      position: absolute;
+      top: 25.7%;
+      width: 28%;
+      height: 60%;
+      border-radius: 4px;
+      margin: 4% 0 0 0;
+      padding: 0 3%;
+      display: block;
+
+
+    }
+
+  .defBtn{
+    margin: 4% 13%;
+    padding: 0;
+    border: 1px;
+    width: 50%;
+    height: 10%;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none
+    font-weight: bold;
+    color: #FDEFEF;
+  }
+
+    #Uni_Login_Form{
+      position: absolute;
+      top: 24.7%;
+      right: 130px;
+      width: 45%;
+      display: none;
+      border-radius: 14px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.97;
+      background-color: #F9F3DF;
+
+    }
+
+    #Uni_Create_Form{
+      position: absolute;
+      top: 20.7%;
+      right: 130px;
+      height: 400px;
+      width: 45%;
+      display: none;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.84;
+      background-color: #F9F3DF;
+      overflow-y: scroll;
+
+    }
+
+    #Uni_Reset_Form{
+      position: absolute;
+      top: 24.7%;
+      right: 130px;
+      width: 45%;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.94;
+      background-color: #F9F3DF;
+      display: block;
+    }
+    input[type=search], input[type=text], input[type=tel], input[type=email],input[type=password]{
+      margin: 1% 6% 1% 0;
+      width: 88%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=search]{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=submit]{
+      margin: 4% 30%;
+      padding: 0;
+      border: 0;
+      width: 40%;
+      height: 30px;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: lighter;
+      color: #FDEFEF;
+    }
+
+    .auth_form_message{
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      width: 100%;
+      text-align: center;
+    }
+
+    .auth_form_error{
+      margin: 2% 0;
+      padding: 0;
+      font-weight: lighter;
+      width: 95%;
+      text-align: center;
+    }
+
+  /*
+  Below is the footer section
+  */
+
+    #footer{
+      position: sticky;
+      top: 87%;
+      width: 100%;
+      height: 10%;
+      margin: 0;
+      padding: 0;
+      border: 0;
+
+    }
+
+    #auth_back_btn{
+      margin: 4% 28%;
+      padding: 0;
+      border: 1px;
+      width: 44%;
+      height: 50%;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: bold;
+      color: white;
+
+    }
+
+    option{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      height: 10px;
+      text-decoration: none;
+      font-weight: lighter;
+      color: #151965;
+    }
+
+
+}
+
+@media (min-width:1024.1px) and (max-width:1440px) {
+
+
+  *{
+    color: #151965;
+  }
+
+  #display{
+    width: 100%;
+    height: 90%;
+    position: absolute;
+    top: 0%;
+    padding: 0;
+    margin: 0;
+    border: 0;
+
+  }
+  #logo_pos{
+    position: relative;
+    top: 5%;
+    padding: 0;
+    margin: 0 05%;
+    border: 0;
+    width: 10%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: absolute;
+    top: 15%;
+    margin: 0 35%;
+    width: 50%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 38px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: center;
+    color: #151965;
+  }
+  #bodTextAbout{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    color: black;
+    height: 30%;
+  }
+
+  /*
+  Below is the main body section
+
+  */
+
+
+    #defaultView{
+      position: absolute;
+      top: 25.7%;
+      width: 28%;
+      height: 60%;
+      border-radius: 4px;
+      margin: 4% 0 0 0;
+      padding: 0 3%;
+      display: block;
+
+
+    }
+
+  .defBtn{
+    margin: 4% 13%;
+    padding: 0;
+    border: 1px;
+    width: 50%;
+    height: 10%;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none
+    font-weight: bold;
+    color: #FDEFEF;
+  }
+
+    #Uni_Login_Form{
+      position: absolute;
+      top: 24.7%;
+      height: 280px;
+      overflow-y: scroll;
+      right: 130px;
+      width: 45%;
+      display: none;
+      border-radius: 14px;
+      margin: 4% auto;
+      padding: 0 10px;
+      text-align: center;
+      opacity: 0.97;
+      background-color: #F9F3DF;
+
+    }
+
+    #Uni_Create_Form{
+      position: absolute;
+      top: 18.7%;
+      right: 130px;
+      height: 400px;
+      width: 45%;
+      display: none;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.84;
+      background-color: #F9F3DF;
+      overflow-y: scroll;
+
+    }
+
+    #Uni_Reset_Form{
+      position: absolute;
+      top: 24.7%;
+      right: 130px;
+      width: 45%;
+      border-radius: 4px;
+      margin: 4% 5%;
+      padding: 0 5px;
+      text-align: center;
+      opacity: 0.94;
+      background-color: #F9F3DF;
+      display: block;
+    }
+    input[type=search], input[type=text], input[type=tel], input[type=email],input[type=password]{
+      margin: 1% 6% 1% 0;
+      width: 88%;
+      height: 35px;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+      border-radius: 14px;
+      border: 0;
+    }
+
+    input[type=search]{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      text-decoration: none;
+      font-weight: lighter;
+      color: black;
+    }
+
+    input[type=submit]{
+      margin: 4% 30%;
+      padding: 0;
+      border: 0;
+      width: 40%;
+      height: 30px;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: lighter;
+      color: #FDEFEF;
+    }
+
+    .auth_form_message{
+      margin: 0;
+      padding: 0;
+      font-weight: normal;
+      width: 100%;
+      text-align: center;
+    }
+
+    .auth_form_error{
+      margin: 2% 0;
+      padding: 0;
+      font-weight: lighter;
+      width: 95%;
+      text-align: center;
+    }
+
+  /*
+  Below is the footer section
+  */
+
+    #footer{
+      position: sticky;
+      top: 92%;
+      width: 30%;
+      height: 10%;
+      margin: 0 auto;
+      padding: 0;
+      border: 0;
+
+    }
+
+    #auth_back_btn{
+      margin: 4% 28%;
+      padding: 0;
+      border: 1px;
+      width: 44%;
+      height: 50%;
+      background-color: #151965;
+      border-radius: 14px;
+      text-decoration: none
+      font-weight: bold;
+      color: white;
+
+    }
+
+    option{
+      margin: 1% 6% 1% 0;
+      width: 90%;
+      height: 10px;
+      text-decoration: none;
+      font-weight: lighter;
+      color: #151965;
+    }
+
+
+}
+a{
+  text-decoration: none;
+  color: white;
+  zoom: 100%;
+  /* transition: zoom 2s; */
+
+}
+a:hover{
+  zoom: 110%;
+  /* transition: zoom 2s; */
+  transform: rotate(140deg);
+  transition: transform 3s;
+}

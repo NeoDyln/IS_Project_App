@@ -1,0 +1,361 @@
+html, body{
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 320px;
+  min-height: 578px;
+  width: 100%;
+}
+
+*{
+  font-family: 'Source Sans Pro', sans-serif;
+  color: white;
+  font-weight: normal;
+}
+
+body{
+  background-repeat: no-repeat;
+  background-color: white;
+}
+
+
+.main_bod{
+  height: 100%;
+  width: 100%;
+  /* background-repeat: no-repeat; */
+  /* background-image: url('../Images/background.jpg'); */
+  /* background-size: cover; */
+}
+
+
+@media (min-width: 320px) and (max-width: 425px) {
+  #display{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+
+  #logo_pos{
+    position: relative;
+    top: 5%;
+    padding: 0;
+    margin: 0 25%;
+    border: 0;
+    width: 50%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: relative;
+    top: 8%;
+    margin: 0 25%;
+    width: 50%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: center;
+    color: #151965;
+  }
+  #bodTextAbout{
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    color: black;
+    height: 30%;
+
+
+  }
+  /*
+  Main options start here
+  */
+
+  #opts{
+    position: absolute;
+    bottom: 2%;
+    width: 90%;
+    margin: 0 5%;
+    padding: 0;
+    height: 30%;
+
+  }
+
+
+  #getStarted{
+    position: relative;
+    display: block;
+    margin: 10% 15%;
+    padding: 0;
+    border: 1px;
+    width: 70%;
+    height: 25%;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+
+  #registerInst{
+    position: relative;
+    display: block;
+    margin: 10% 15%;
+    padding: 0;
+    border: 1px;
+    width: 70%;
+    height: 25%;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none;
+
+
+  }
+}
+
+@media (min-width: 425.1px) and (max-width: 1024px) {
+  #display{
+    width: 40%;
+    height: 578px;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: #F5EDED;
+    opacity: 0.9;
+  }
+
+  #logo_pos{
+    position: relative;
+    top: 5%;
+    padding: 0;
+    margin: 0 15%;
+    border: 0;
+    width: 60%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: relative;
+    top: 8%;
+    margin: 0 15%;
+    width: 50%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: left;
+    color: #151965;
+  }
+  #bodTextAbout{
+    position: absolute;
+    top: 80px;
+    text-align: left;
+    width: 80%;
+    margin: 0 ;
+    color: black;
+    height: 30%;
+
+
+  }
+  /*
+  Main options start here
+  */
+
+  #opts{
+    position: absolute;
+    width: 40%;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    height: 200px;
+    display: block;
+    opacity: 0.9;
+    background-color: #F9F3DF;
+
+  }
+
+
+  #getStarted{
+    position: relative;
+    display: block;
+    top: 60px;
+    margin: auto 15%;
+    padding: 0;
+    border: 1px;
+    width: 70%;
+    height: 35px;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none;
+  }
+
+  #registerInst{
+    position: relative;
+    display: block;
+    top: 80px;
+    margin: auto 15%;
+    padding: 0;
+    border: 1px;
+    width: 70%;
+    height: 35px;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none;
+
+
+  }
+}
+
+@media (min-width: 1024.1px) and (max-width: 1440px) {
+
+
+  #display{
+    width: 30%;
+    height: 578px;
+    position: absolute;
+    top: 0;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    background-color: #F5EDED;
+    opacity: 1;
+  }
+
+  #logo_pos{
+    position: relative;
+    top: 3%;
+    padding: 0;
+    margin: 0 20%;
+    border: 0;
+    width: 40%;
+    display: block;
+  }
+
+  #logo{
+    width: 100%;
+  }
+
+  #head_pos{
+    position: relative;
+    top: 5%;
+    margin: 0 20%;
+    width: 50%;
+    padding: 0;
+    display: block;
+
+  }
+
+  #bod_text{
+    font-size: 28px;
+    text-align: center;
+    position: relative;
+    top: 0%;
+    margin: 0;
+    text-align: left;
+    color: #151965;
+  }
+  #bodTextAbout{
+    position: absolute;
+    top: 80px;
+    text-align: left;
+    width: 80%;
+    margin: 0;
+    color: #151965;
+    height: 30%;
+
+
+  }
+  /*
+  Main options start here
+  */
+
+  #opts{
+    position: absolute;
+    width: 30%;
+    bottom: 0%;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    height: 200px;
+    display: block;
+    opacity: 1;
+    /* background-color: red; */
+    background-color: #F9F3DF;
+
+  }
+
+
+  #getStarted{
+    position: absolute;
+    display: block;
+    bottom: 70px;
+    margin: auto 20%;
+    padding: 0;
+    border: 1px;
+    width: 35%;
+    height: 35px;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none;
+
+  }
+
+  #registerInst{
+    position: absolute;
+    display: block;
+    bottom: 25px;
+    margin: auto 20%;
+    padding: 0;
+    border: 1px;
+    width: 35%;
+    height: 35px;
+    background-color: #151965;
+    border-radius: 14px;
+    text-decoration: none;
+
+
+  }
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+
+
+}
+a:hover{
+  zoom: 103%;
+
+  transition: zoom 2s;
+}

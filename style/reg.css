@@ -170,7 +170,7 @@ a{
 @media (min-width: 425px) and (max-width:768px) {
   .uniChecker{
     position: absolute;
-    display: block;
+    display: none;
     top: 20%;
     margin: 2% 26%;
     width: 40%;
@@ -316,7 +316,7 @@ a{
 @media (min-width: 769px) and (max-width:1024px) {
   .uniChecker{
     position: absolute;
-    display: block;
+    display: none;
     top: 20%;
     margin: 2% 26%;
     width: 40%;
@@ -457,7 +457,7 @@ a{
 @media (min-width: 1025px) {
   .uniChecker{
     position: absolute;
-    display: block;
+    display: none;
     top: 20%;
     margin: 2% 26%;
     width: 40%;

@@ -64,7 +64,7 @@ include 'serverConnector.php';
                 }
 
             }
-        }
+        
      ?>
   </body>
 </html>

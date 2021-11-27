@@ -1,5 +1,6 @@
 <?php
-  session_start();
+if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+if(session_status() === PHP_SESSION_NONE) session_start();
 // First we include the server connector
   include 'serverConnector.php';
 
@@ -23,7 +24,7 @@
 
     $serverConn = new mysqli($serverName, $username, $password, "interappconn");
    //This first checks if the table exists and if it doesn't, a new table is made
-    
+
     if($serverConn){
        $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
 
@@ -153,11 +154,11 @@
 
     }
 
-   
 
 
 
-  } 
+
+  }
   else {
     echo "You did not follow the correct procedure. Redirecting you back to the home page...";
     session_destroy();

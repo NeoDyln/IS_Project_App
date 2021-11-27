@@ -1,10 +1,11 @@
 <?php
 
-if (isset($_SESSION)) {
+if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+if(session_status() === PHP_SESSION_NONE) session_start();
 
-  $serverName = "localhost";
-  $username = "root";
-  $password = "";
+if (isset($_SESSION)) {
+  include 'serverConnector.php';
+
   $daB = "interappconn";
 
   $serverConn = new mysqli($serverName,$username,$password,$daB);

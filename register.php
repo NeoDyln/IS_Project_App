@@ -21,7 +21,7 @@ session_start();
 
 
       <form class="uniChecker" action="php/TeamChecker.php" method="post">
-        <label for="UniSearch" id="uniSearchL">First, try and find your organization below</label>
+        <h3 id="uniSearchL">First, try and find your organization below</h3>
         <input type="search" id="uniSearch" name="UniSearch" list="UniList" placeholder="Type here">
         <datalist class="UniList">
           <?php
@@ -36,12 +36,13 @@ session_start();
         </datalist>
 
         <p id="UniMissErr">If you cannot find it here, then you can safely proceed to register below</p>
+        <input type="submit" id="uniQuerySubmit" onclick="showRegForm()" value="Next">
       </form>
 
 
 
       <form class="registration" action="php/RegisterTeam.php" method="post">
-        <label for="uniName">Let's get you registered then</label>
+        <h3 id="RegUniFormTitle">Let's get you registered then</h3>
         <input type="text" name="uniName" id="uniname" placeholder="Enter your organization/ team name">
         <input type="text" name="uniInit" id="uniinitials" placeholder="Enter your organization's /team's initials if any">
         <input type="url" name="uniURL" placeholder="Enter your organization's/ team's URL">

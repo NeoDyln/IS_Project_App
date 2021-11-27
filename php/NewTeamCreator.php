@@ -21,25 +21,26 @@ else{
 
       if ($newDbConn == TRUE){
         // If server connection is successful, we check if the database exists...Naturally, it's not supposed to exist but to be safe, we check anyway
-      //   $newDbQuery = new mysqli($serverName,$username,$password, $newDb);
-      //
-      //
-      //   if ($newDbQuery) {
-      //     mysqli_close($newDbConn);
-      //     // This check is supposed to be false
-      //     // If the database already exists, we notify of a breech because this should be registration alone
-      //     ?>
-      //     <script type="text/javascript">
-      //       alert("Possible data breach....Database already exists during first time creation..Check on dates of database \n creation from hosting service's database management page for database <?php echo $database; ?>");
-      //       alert("Head back to login. This organization is already registered");
-      //     </script>
-      //
-      //     <?php
-      //     session_destroy();
-      //     mysqli_close($newDbQuery);
-      //     header("Location: ../index.html?DatabaseAlreadyExistsEch");
-      //   }
-      //   elseif (!$newDbQuery) {
+
+
+        $newDbQuery = mysqli_query($newDbConn, "SELECT DATABASE $newDb");
+
+
+        if ($newDbQuery) {
+          mysqli_close($newDbConn);
+          // This check is supposed to be false
+          // If the database already exists, we notify of a breech because this should be registration alone
+          ?>
+           <script type="text/javascript">
+             alert("Possible data breach....Database already exists during first time creation..Check on dates of database \n creation from hosting service's database management page for database <?php echo $database; ?>");
+             alert("Head back to login. This organization is already registered");
+          </script>
+
+           <?php
+              session_destroy();
+              header("Location: ../index.html?DatabaseAlreadyExistsEch");
+        }
+        elseif (!$newDbQuery) {
           // Here, we confirmed the database should not exist hence we now create the database
           $dbCreate = $newDbConn->query("CREATE DATABASE $newDb");
 
@@ -57,7 +58,7 @@ else{
 
             $admiQuery = $mainDbConn->query($adminTable);
 
-            if ($admiQuery->num_rows > 0) {
+            if ($admiQuery) {
               // IF the connection is again true, then there must be a data breach somewhere
               ?>
               <script type="text/javascript">
@@ -73,19 +74,19 @@ else{
 
             }
 
-            elseif ($admiQuery->num_rows == 0) {
+            elseif (!$admiQuery) {
               // Here we comfortably can be sure there was no breach of the system files thus we create our table
               $tableQuery =  $mainDbConn->query("CREATE TABLE IF NOT EXISTS admins (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniAdmin VARCHAR(255))");
 
               // Query for table creation
 
-              if ($tableQuery == TRUE) {
+              if ($tableQuery) {
                 // We pass in the uni name and administrator
                 $insertStmt = "INSERT INTO admins (uniName, uniAdmin) VALUES ('$uniName', '$uniAdmin')";
                 $InsertQuery = $mainDbConn->query($insertStmt);
 
                 // We then query if data was successfully entered
-                if ($InsertQuery == TRUE) {
+                if ($InsertQuery) {
                   ?>
                   <script type="text/javascript">
                     alert("Institution/ Team Created successfully. Please go and register using the Get Started Button");
@@ -96,7 +97,7 @@ else{
                   session_destroy();
                   header("Location: ../index.html?InstCreatedSuccess");
                 }
-                elseif ($InsertQuery == FALSE) {
+                elseif (!$InsertQuery) {
                     ?>
                     <script type="text/javascript">
                       alert("Well this is unexpected. Data entry into institution table unsuccessful. We are working to resolve this soon");
@@ -130,7 +131,7 @@ else{
 
                       $newDbConn = new mysqli($serverName, $username, $password, "interappconn");
 
-                      $deleteRecord = "DROP * from institutions where uniDatabaseID = $database";
+                      $deleteRecord = "DROP * from institutions where uniDatabaseID = $newDb";
 
                       $newDbConn->query($deleteRecord);
             ?>
@@ -145,7 +146,7 @@ else{
             header("Location: ../index.html?DatabaseCreationError");
           }
 
-        // }
+         }
 
 
       }

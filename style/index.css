@@ -6,12 +6,12 @@ html, body{
   min-width: 320px;
   min-height: 578px;
   width: 100%;
+  max-width: 1024px;
 }
 
 *{
-  font-family: 'Source Sans Pro', sans-serif;
-  color: white;
-  font-weight: normal;
+  font-family: 'Comfortaa', cursive;
+  color: #EEEEEE;
 }
 
 body{
@@ -132,7 +132,7 @@ body{
 @media (min-width: 425.1px) and (max-width: 1024px) {
   #display{
     width: 40%;
-    height: 578px;
+    height: 100%;
     position: absolute;
     top: 0;
     padding: 0;
@@ -200,7 +200,7 @@ body{
     height: 200px;
     display: block;
     opacity: 0.9;
-    background-color: #F9F3DF;
+    background-color: #F5EDED;
 
   }
 
@@ -240,8 +240,8 @@ body{
 
 
   #display{
-    width: 30%;
-    height: 578px;
+    width: 40%;
+    height: 100%;
     position: absolute;
     top: 0;
     padding: 0;
@@ -301,7 +301,7 @@ body{
 
   #opts{
     position: absolute;
-    width: 30%;
+    width: 40%;
     bottom: 0%;
     left: 0;
     margin: 0;
@@ -311,7 +311,7 @@ body{
     display: block;
     opacity: 1;
     /* background-color: red; */
-    background-color: #F9F3DF;
+    background-color: #F5EDED;
 
   }
 
@@ -328,6 +328,7 @@ body{
     background-color: #151965;
     border-radius: 14px;
     text-decoration: none;
+    color: white;
 
   }
 
@@ -343,7 +344,7 @@ body{
     background-color: #151965;
     border-radius: 14px;
     text-decoration: none;
-
+    color: white;
 
   }
 }

@@ -44,13 +44,13 @@
   if ($checkValues->num_rows > 0 ) {
       // Institutions exists
       // We confirm if data about the current typed institution
-      $uniList = $serverConn->query("SELECT * FROM institutions WHERE uniName == $uniName ");
+      $uniList = $serverConn->query("SELECT COUNT(uniName) FROM institutions WHERE uniName == ".$_POST['uniName']);
 
-      if ($uniList->num_rows> 0 ) {
+      if ($uniList > 0){
         // Return an error that the team/ organization is registered
         header("Location: ../index.html?UniExists");
       }
-      else {
+      elseif ($uniList == 0) {
 
         // Insert the new organization as a new record
         // Since it's a new record
@@ -71,7 +71,7 @@
 
         //We would want to make sure that the created ID is not already in the table as it acts as a unique reference to the database of an Institutions
 
-        $ConfirmDbIdUnique = "SELECT * FROM institutions WHERE uniTableID == $uniDB";
+        $ConfirmDbIdUnique = "SELECT $uniDB FROM institutions WHERE uniTableID == ";
         $confRes = mysqli_query($serverConn, $ConfirmDbIdUnique);
 
         //If it exists, we repeat the random creator and generate a new ID and check again as below
@@ -145,6 +145,8 @@
       $_SESSION['uniName']= $uniName;
       $_SESSION['uniAdmin'] = $uniAdmins;
       mysqli_close($serverConn);
+
+      echo "string";
 
       include "NewTeamCreator.php";
 

@@ -4,14 +4,13 @@ body,html{
   margin: 0;
   color: white;
   min-height: 578px;
-  background-image: url(../Images/background.jpg);
-  background-size: cover;
+  background-color: #F5EDED;
 
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Comfortaa' cursive;
 }
 
 button{
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Comfortaa', cursive;
 
 }
 
@@ -37,8 +36,8 @@ button{
   }
 
   #userName{
-    margin: 0;
-    padding: 7px 0 3px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 16px;
     word-spacing: 0.2px;
@@ -46,8 +45,8 @@ button{
   }
   #userMail{
     display: inline-block;
-    margin: 0;
-    padding: 0 0 5px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 10px;
     word-spacing: 0.2px;
@@ -163,7 +162,7 @@ button{
 
   .quickMenu{
     float: right;
-    margin: 18px 0 0 0;
+    margin: 10px 0 0 0;
     bottom: 0;
   }
 
@@ -274,8 +273,8 @@ button{
   }
 
   #userName{
-    margin: 0;
-    padding: 7px 0 3px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 16px;
     word-spacing: 0.2px;
@@ -283,8 +282,8 @@ button{
   }
   #userMail{
     display: inline-block;
-    margin: 0;
-    padding: 0 0 5px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 10px;
     word-spacing: 0.2px;
@@ -373,7 +372,7 @@ button{
     padding-top: 13px;
     float: left;
     text-align: center;
-    width: 40px;
+    width: auto;
     height: 32px;
     background-color: #F8F1F1;
     border-radius: 114px;
@@ -402,7 +401,7 @@ button{
     position: absolute;
     top: 102%;
     left: 270%;
-    margin: 14px 0 0 0;
+    margin: 10px 0 0 0;
     bottom: 0;
   }
 
@@ -518,8 +517,8 @@ button{
   }
 
   #userName{
-    margin: 0;
-    padding: 7px 0 3px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 16px;
     word-spacing: 0.2px;
@@ -527,8 +526,8 @@ button{
   }
   #userMail{
     display: inline-block;
-    margin: 0;
-    padding: 0 0 5px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 10px;
     word-spacing: 0.2px;
@@ -646,7 +645,7 @@ button{
     position: absolute;
     top: 102%;
     left: 270%;
-    margin: 14px 0 0 0;
+    margin: 10px 0 0 0;
     bottom: 0;
     display: none;
   }
@@ -763,8 +762,8 @@ button{
   }
 
   #userName{
-    margin: 0;
-    padding: 7px 0 3px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 16px;
     word-spacing: 0.2px;
@@ -772,8 +771,8 @@ button{
   }
   #userMail{
     display: inline-block;
-    margin: 0;
-    padding: 0 0 5px 2px;
+    margin: 0 5px;
+    padding: 7px 0 3px 12px;
     border: 0;
     font-size: 10px;
     word-spacing: 0.2px;
@@ -891,7 +890,7 @@ button{
     position: absolute;
     top: 102%;
     left: 270%;
-    margin: 14px 0 0 0;
+    margin: 10px 0 0 0;
     bottom: 0;
     display: none;
   }

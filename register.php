@@ -1,9 +1,16 @@
 <?php
-session_start();
+
+
+
 // We'll include the sever Connector as well as a code to check the registered teams and also one to check if the main database exists
 include 'php/serverConnector.php';
 include 'php/MainDatabaseCreator';
 include 'php/TeamChecker.php';
+
+if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+if(session_status() === PHP_SESSION_NONE) session_start();
+session_start();
+$row = $_SESSION['row'];
  ?>
   <!DOCTYPE html>
   <html lang="en" dir="ltr">

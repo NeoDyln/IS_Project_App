@@ -1,8 +1,6 @@
 <?php
-
-$serverName = "localhost";
-$username = "root";
-$password = "";
+// File to connect to server is added here
+include 'serverConnector.php';
 
 ?>
 <!--DOCTYPE html-->
@@ -12,20 +10,8 @@ $password = "";
     <title></title>
   </head>
   <body>
-    <?php
-        // First we connect to the server
-        $serverConn = new mysqli($serverName,$username,$password);
 
-        // Perform a test connection to the server
-        if ($serverConn->connect_error) {
-          //If server is unreachable, return error
-          die("Server Connection failed: ". $serverConn->connect_error);
-        }
-        else {
-
-          // If server is reachable, notify success...
-        ?>
-          <script> alert( "Connected to Server. \n  Trying to reach database ...") </script>
+        <script> alert( "Connected to Server. \n  Trying to reach database ...") </script>
 
         <?php
 

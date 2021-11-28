@@ -11,7 +11,6 @@ include 'serverConnector.php';
   </head>
   <body>
 
-        <script> alert( "Connected to Server. \n  Trying to reach database ...") </script>
 
         <?php
 
@@ -25,16 +24,56 @@ include 'serverConnector.php';
             $mainDbConn = new mysqli($serverName,$username,$password, $database)
             // If successful...
             ?>
-              <script>alert("Connected to database successfully")</script>
+
 
             <?php
             $serverConn = new mysqli($serverName,$username,$password,$database);
+
+            // We'll then create the table and add some test data for the program to work
+            $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
+
+            if ($tableCreate) {
+
+              //  We then check if test data exists in the mysql_list_tables
+              $testId = "Test Uni";
+              $testData = "SELECT uniName FROM institutions WHERE uniName='Test Uni'";
+
+              $testQuery = mysqli_query($serverConn, $testData);
+
+                if (mysqli_num_rows($testQuery) > 0) {
+                  // If the test data already exists, do nothing else in this script
+                }
+                else{
+                  $insertData = "INSERT INTO institutions(uniName,uniDatabaseID, uniInit,uniURL, uniAdmin) VALUES ('Test Uni','testuniID','TEST','https://www.test.test','test@test.test')";
+
+                  $insQue = mysqli_query($serverConn, $insertData);
+
+                  if ($insQue) {
+                    // If the insertion is successful, simply do nothing and continue with process
+                  }
+                  else{
+                    ?>
+                    <script type="text/javascript">
+                      alert("Test Data failed to insert");
+                    </script>
+
+                    <?php
+
+                    header("Location: ../index.html");
+                  }
+                }
+              }
+
+
+            else{
+              header("Location: ../index.html?FirstTimeTableCreationFailed");
+            }
 
 
 
           }
 
-          elseif (!mainDbConn) {
+          elseif (!$mainDbConn) {
                 // If database connection is unsuccessful, it means it does not exist so we create it
                 ?>
                   <script>alert("Database connection failed. \n Creating Database ... ")</script>
@@ -50,7 +89,19 @@ include 'serverConnector.php';
                     $database = "interappconn";
                     $serverConn = $serverConn = new mysqli($serverName,$username,$password,$database);
                     $_SESSION['serverConn'] = $serverConn;
-                    header("Location: ../index.html?nfvnsfvn");
+
+
+                    // We'll then create the table and add some test data for the program to work
+                    $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
+
+                    if ($tableCreate) {
+
+                      $insertData = "INSERT INTO institutions(uniName,uniDatabaseID, uniInit,uniURL, uniAdmin) VALUES ('Test Uni','testuniID','TEST','https://www.test.test','test@test.test')";
+                    }
+                    else{
+                      header("Location: ../index.html?FirstTimeTableCreationFailed");
+                    }
+
 
                 }
                 elseif (!databaseCreQue) {
@@ -64,7 +115,7 @@ include 'serverConnector.php';
                 }
 
             }
-        
+
      ?>
   </body>
 </html>

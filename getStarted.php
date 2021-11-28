@@ -1,8 +1,10 @@
 <?php
-  session_start();
-  include 'php/TeamChecker.php';
+  if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+  if(session_status() === PHP_SESSION_NONE) session_start();
+  require 'php/serverConnector.php';
+  require 'php/TeamChecker.php';
 
-  $row = $_SESSION['row'];
+
 ?>
   <!--DOCTYPE html-->
   <html lang="en" dir="ltr">
@@ -63,17 +65,15 @@
                   Here, we will simply query the database for whether the institution being searched exists
                   We will pull the institutions into a list below and assign each opption as an option that's selectable
               -->
-              <datalist id="uniList" >
-                <!--  For each uni in the database, we shall list them here as an option -->
+              <datalist id="uniList">
                 <?php
-                  while ($row) {
-                ?>
-                    <option value=" <?php echo $row[0]; ?> "> <?php echo $row[1]; ?> </option>';
-                <?php
+                  foreach ($row as $item) {
+
+                      ?>
+                      <option value="<?php echo $item['uniInit']; ?>"><?php echo $item['uniName'];  ?> </option>
+                      <?php
                     }
                 ?>
-
-
               </datalist>
 
               <h5 class="auth_form_error">If you cannot find it, your institution currently isn't registered or has been deregistered from our system. Ask your Administartor or try again later</h5><br>
@@ -103,10 +103,15 @@
                   Here, we will simply query the database for whether the institution being searched exists
                   We will pull the institutions into a list below and assign each opption as an option that's selectable
               -->
-              <datalist id="uniList" >
-                <!--  For each uni in the database, we shall list them here as an option -->
-                <option value="<Uni Name>"></option>
+              <datalist id="uniList">
+                <?php
+                  foreach ($row as $item) {
 
+                      ?>
+                      <option value="<?php echo $item['uniInit']; ?>"><?php echo $item['uniName'];  ?> </option>
+                      <?php
+                    }
+                ?>
               </datalist>
 
               <h5>Can't find it? Then your institution isn't registered or has been deregistered. Ask your administrator</h5>
@@ -114,7 +119,7 @@
               <input type="hidden" name="uniDB"><!-- This will collect the user's university database code -->
 
               <label for="userNames">Enter your full name</label>
-              <input type="text" name="userMail" placeholder="Name(s)..." required data-emojiable="true"> <br><br>
+              <input type="text" name="userNames" placeholder="Name(s)..." required data-emojiable="true"> <br><br>
 
               <label for="userTel">Enter your phone number</label>
               <input type="tel" name="userTel" placeholder="Phone number..." required> <br><br>

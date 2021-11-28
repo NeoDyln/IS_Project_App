@@ -1,4 +1,15 @@
 
+
+<?php
+  require 'php/serverConnector.php';
+  require 'php/MainDatabaseCreator.php';
+  require 'php/TeamChecker.php';
+
+  if(session_status() !== PHP_SESSION_ACTIVE) session_start();
+  elseif(session_status() === PHP_SESSION_NONE) session_start();
+
+
+?>
   <!DOCTYPE html>
   <html lang="en" dir="ltr">
     <head>
@@ -17,16 +28,15 @@
     <body>
 
 
-      <form class="uniChecker" action="php/TeamChecker.php" method="post">
+      <form class="uniChecker" action="#" method="post">
         <h3 id="uniSearchL">First, try and find your organization below</h3>
         <input type="search" id="uniSearch" name="UniSearch" list="UniList" placeholder="Type here">
-        <datalist class="UniList">
+        <datalist id="UniList">
           <?php
-          while ($row) {
+        foreach ($row as $item) {
+
             ?>
-
-            <option value="<?php echo $row[0]; ?>"><?php echo $row[1];  ?> </option>
-
+            <option value="<?php echo $item['uniInit']; ?>"><?php echo $item['uniName'];  ?> </option>
             <?php
           }
           ?>
@@ -64,11 +74,9 @@
 
 
   // We'll include the sever Connector as well as a code to check the registered teams and also one to check if the main database exists
-  include 'php/serverConnector.php';
-  include 'php/MainDatabaseCreator.php';
-  include 'php/TeamChecker.php';
+
 
   if(session_status() !== PHP_SESSION_ACTIVE) session_start();
   if(session_status() === PHP_SESSION_NONE) session_start();
-  $row = $_SESSION['row'];
+
    ?>

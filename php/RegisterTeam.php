@@ -13,9 +13,11 @@ require 'serverConnector.php';
     //We collect Data from forms first
 
 
+    if (isset($_POST['uniName']) && isset($_POST['uniInit']) && isset($_POST['uniURL']) && isset($_POST['uniAdmin'])) {
+
     //  Protect against injection with the below statement
     // mysqli_real_escape_string($database_Connection, $The_POST_Value_From_Form)
-    $uniName = mysqli_real_escape_string($serverConn, stripcslashes($_POST['uniName']));
+    $uniName =  mysqli_real_escape_string($serverConn, stripcslashes($_POST['uniName']));
     $uniInit = mysqli_real_escape_string($serverConn, stripcslashes($_POST['uniInit']));
     $uniWebsite = mysqli_real_escape_string($serverConn, stripcslashes($_POST['uniURL']));
     $uniAdmin = mysqli_real_escape_string($serverConn, stripcslashes($_POST['uniAdmin']));
@@ -30,31 +32,35 @@ require 'serverConnector.php';
       if($serverConn){
         // Database existence is true here
         //  We then check for the main table's existence
-        // Below is its statement
-             $tableCheck = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
+        // Since it shoould have been created at MainDatabaseCreator, we simply check whether the table has data
 
 
-             // We then query to see if the database is there/ has been created
-             if ($tableCheck) {
-                 // Here, the database exists
 
-                 $checkValues = $serverConn->query("SELECT * FROM institutions");
+                 $checkValues = $serverConn->prepare("SELECT * FROM institutions");
+                 $checkValues->execute();
+                 $checkValues->store_result();
+
                    // IF data exists...
                  if ($checkValues->num_rows > 0 ) {
                      // Institutions exists
                      // We confirm if data about the current typed institution
-                     $uniList = $serverConn->query("SELECT uniName FROM institutions WHERE uniName=$uniName");
+                     $uniList = mysqli_query($serverConn , "SELECT uniName FROM institutions WHERE uniName = '.$uniName.' LIMIT 1 ");
 
-                     if ($uniList->num_rows > 0){
+                    $row = mysqli_fetch_array($uniList);
+
+
+                     while ($row){
                        // Return an error that the team/ organization is registered
-                       header("Location: ../index.html?UniExists");
+                       echo $row;
+                       header("Location: ../index.html?UniExisvfdfts");
+
                      }
-                     elseif ($uniList == 0) {
+
 
                          // Insert the new organization as a new record
                          // Since it's a new record
 
-                         $InsertStmt = $serverConn->prepare("Insert into institutions(uniName,uniInit,uniDatabaseID,uniAdmin,uniURL) values(?,?,?,?,?)");
+                         $InsertStmt = $serverConn->prepare("INSERT INTO institutions(uniName,uniInit,uniDatabaseID,uniAdmin,uniURL) VALUES(?,?,?,?,?)");
 
                          // Inorder to insert the uni ID , we need to create it first
                          //To generate the unique ID for a database, we first create the random item
@@ -70,8 +76,9 @@ require 'serverConnector.php';
 
                          //We would want to make sure that the created ID is not already in the table as it acts as a unique reference to the database of an Institutions
 
-                         $ConfirmDbIdUnique = "SELECT $uniDB FROM institutions WHERE uniTableID == ";
-                         $confRes = mysqli_query($serverConn, $ConfirmDbIdUnique);
+                         $ConfirmDbIdUnique = mysqli_query($serverConn, "SELECT uniDatabaseID FROM institutions WHERE uniDatabaseID = '.$uniDB.' LIMIT 1");
+
+                         $confRes = mysqli_fetch_array($ConfirmDbIdUnique);
 
                          //If it exists, we repeat the random creator and generate a new ID and check again as below
                          // When the below becomes false, then the ID is added to the database
@@ -82,6 +89,7 @@ require 'serverConnector.php';
                            $randStr = strval($randomInt);
                            // I then append or merge the uniName to the random integer
                            $uniDB = strtolower($uniNm.$randStr);
+
                          }
 
                          $InsertStmt->bind_param("sssss",$uniName,$uniInit,$uniDB,$uniAdmins,$uniURL);
@@ -104,11 +112,11 @@ require 'serverConnector.php';
 
 
 
-                     }
+
 
                   }
                    // If completely no data exists...
-                 elseif ($checkValues->num_rows == 0) {
+                 elseif (mysqli_num_rows($checkValues) == 0) {
                        // Institution does not exist
                        // What we want to do is insert a record for that institution
 
@@ -153,7 +161,7 @@ require 'serverConnector.php';
                    header(location: "../index.html?DatabasedidNotExistTryAgain");
                  }
 
-              }
+
 
 
 
@@ -173,7 +181,7 @@ require 'serverConnector.php';
 
 
       }
-
+    }
 
   }
 

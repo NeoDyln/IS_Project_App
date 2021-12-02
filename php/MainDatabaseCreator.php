@@ -30,23 +30,34 @@ include 'serverConnector.php';
             $serverConn = new mysqli($serverName,$username,$password,$database);
 
             // We'll then create the table and add some test data for the program to work
-            $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
+            $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255) UNIQUE, uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
 
             if ($tableCreate) {
 
               //  We then check if test data exists in the mysql_list_tables
-              $testId = "Test Uni";
-              $testData = "SELECT uniName FROM institutions WHERE uniName='Test Uni'";
+              $testName = "Test Uni";
+              $testData = $serverConn->prepare("SELECT uniName FROM institutions WHERE uniName= ?");
+              $testData->bind_param('s', $testName);
+              $testData->execute();
 
-              $testQuery = mysqli_query($serverConn, $testData);
+              $testQuery = $testData->get_result();
+
+
+
 
                 if (mysqli_num_rows($testQuery) > 0) {
                   // If the test data already exists, do nothing else in this script
                 }
                 else{
-                  $insertData = "INSERT INTO institutions(uniName,uniDatabaseID, uniInit,uniURL, uniAdmin) VALUES ('Test Uni','testuniID','TEST','https://www.test.test','test@test.test')";
+                  $insertData = $serverConn->prepare("INSERT INTO institutions(uniName,uniDatabaseID, uniInit,uniURL, uniAdmin) VALUES (?,?,?,?,?)");
 
-                  $insQue = mysqli_query($serverConn, $insertData);
+                  $testID = "testuniID";
+                  $testInit = "TEST";
+                  $testURL = "https://www.test.test";
+                  $testAdmin = "test@test.test";
+
+                  $insertData->bind_param("sssss", $testName,$testID,$testInit,$testURL, $testAdmin);
+                  $insQue = $insertData->execute();
 
                   if ($insQue) {
                     // If the insertion is successful, simply do nothing and continue with process

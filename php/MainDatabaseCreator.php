@@ -63,13 +63,13 @@ include 'serverConnector.php';
                     //  If the test data has been inserted well, we create the assosciated database for the test datab
 
 
-                    $testDatabase = mysqli_query($serverConn, "CREATE DATABASE '.$testID.'");
+                    $testDatabase = mysqli_query($serverConn, "CREATE DATABASE IF NOT EXISTS testuniID ");
 
                     if(!$testDatabase){
                       header("Location: ../register.php?TestDBC");;
                     }
                     else{
-                      header("Location: ../register.php?TestDBCreated");
+                      
                     }
                   }
                   else{

@@ -18,9 +18,9 @@
   }
 
   // We then fetch the type of query as a variable
-  $logIn = $_POST['logOn'];
+  // $logIn = $_POST['logOn'];
   $signUp = $_POST['signUp'];
-  $forgotPass = $_POST['resetReq'];
+  // $forgotPass = $_POST['resetReq'];
 
   // For each type, a different action is done
 
@@ -84,7 +84,7 @@
       $insertStmt = $serverConn->prepare("INSERT INTO auth_table(userMail, userNames,userPass, userTel, teamInit, userRole) VALUES (?,?,?,?,?,?)");
 
       // For now, we set all user roles to standard
-      $userRole = "Standard"
+      $userRole = "Standard";
 
       $insertStmt->bind_param("sssiss", $userMail, $userNames, $userPass, $userTel, $uniInit, $userRole);
 

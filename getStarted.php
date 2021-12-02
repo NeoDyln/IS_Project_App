@@ -94,7 +94,7 @@
 
             </form>
 
-            <form id="Uni_Create_Form" action="#" method="post">
+            <form id="Uni_Create_Form" action="php/auth.php" method="post">
               <h2 class="auth_form_message_create">Create Account</h2>
 
               <label for="uniQuery">Search for your institution below</label>

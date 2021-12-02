@@ -60,7 +60,17 @@ include 'serverConnector.php';
                   $insQue = $insertData->execute();
 
                   if ($insQue) {
-                    // If the insertion is successful, simply do nothing and continue with process
+                    //  If the test data has been inserted well, we create the assosciated database for the test datab
+
+
+                    $testDatabase = mysqli_query($serverConn, "CREATE DATABASE '.$testID.'");
+
+                    if(!$testDatabase){
+                      header("Location: ../register.php?TestDBC");;
+                    }
+                    else{
+                      header("Location: ../register.php?TestDBCreated");
+                    }
                   }
                   else{
                     ?>

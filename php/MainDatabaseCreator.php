@@ -30,7 +30,7 @@ include 'serverConnector.php';
             $serverConn = new mysqli($serverName,$username,$password,$database);
 
             // We'll then create the table and add some test data for the program to work
-            $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255) UNIQUE, uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
+            $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255) UNIQUE, uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
 
             if ($tableCreate) {
 
@@ -49,27 +49,27 @@ include 'serverConnector.php';
                   // If the test data already exists, do nothing else in this script
                 }
                 else{
-                  $insertData = $serverConn->prepare("INSERT INTO institutions(uniName,uniDatabaseID, uniInit,uniURL, uniAdmin) VALUES (?,?,?,?,?)");
+                  $insertData = $serverConn->prepare("INSERT INTO institutions(uniName, uniInit,uniURL, uniAdmin) VALUES (?,?,?,?)");
 
-                  $testID = "testuniID";
+
                   $testInit = "TEST";
                   $testURL = "https://www.test.test";
                   $testAdmin = "test@test.test";
 
-                  $insertData->bind_param("sssss", $testName,$testID,$testInit,$testURL, $testAdmin);
+                  $insertData->bind_param("ssss", $testName,$testInit,$testURL, $testAdmin);
                   $insQue = $insertData->execute();
 
                   if ($insQue) {
                     //  If the test data has been inserted well, we create the assosciated database for the test datab
 
 
-                    $testDatabase = mysqli_query($serverConn, "CREATE DATABASE IF NOT EXISTS testuniID ");
+                    $testDatabase = mysqli_query($serverConn, "CREATE DATABASE IF NOT EXISTS $testInit ");
 
                     if(!$testDatabase){
-                      header("Location: ../register.php?TestDBC");;
+                      header("Location: ../register.php?TestDBC1");;
                     }
                     else{
-                      
+
                     }
                   }
                   else{
@@ -113,11 +113,43 @@ include 'serverConnector.php';
 
 
                     // We'll then create the table and add some test data for the program to work
-                    $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniDatabaseID VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
+                    $tableCreate = $serverConn->query("CREATE TABLE IF NOT EXISTS institutions(id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, uniName VARCHAR(255), uniInit VARCHAR(255), uniURL VARCHAR(255), uniAdmin VARCHAR(255) )");
 
                     if ($tableCreate) {
 
-                      $insertData = "INSERT INTO institutions(uniName,uniDatabaseID, uniInit,uniURL, uniAdmin) VALUES ('Test Uni','testuniID','TEST','https://www.test.test','test@test.test')";
+                      $insertData = $serverConn->prepare("INSERT INTO institutions(uniName, uniInit,uniURL, uniAdmin) VALUES (?,?,?,?)");
+
+                      $testName = "Test Uni";
+                      $testInit = 'TEST';
+                      $testURL = 'https://www.test.test';
+                      $testAdmin = 'test@test.test';
+
+                      $insertData->bind_param("ssss", $testName,$testInit,$testURL, $testAdmin);
+                      $insQue = $insertData->execute();
+
+                      if ($insQue) {
+                        //  If the test data has been inserted well, we create the assosciated database for the test datab
+
+
+                        $testDatabase = mysqli_query($serverConn, "CREATE DATABASE IF NOT EXISTS $testInit");
+
+                        if(!$testDatabase){
+                          header("Location: ../register.php?TestDBC");;
+                        }
+                        else{
+
+                        }
+                      }
+                      else{
+                        ?>
+                        <script type="text/javascript">
+                          alert("Test Data failed to insert");
+                        </script>
+
+                        <?php
+
+                        header("Location: ../index.html");
+                      }
                     }
                     else{
                       header("Location: ../index.html?FirstTimeTableCreationFailed");

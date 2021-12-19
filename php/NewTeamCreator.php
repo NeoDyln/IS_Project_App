@@ -94,8 +94,19 @@ else{
 
                   <?php
 
-                  session_destroy();
-                  header("Location: ../index.html?InstCreatedSuccess");
+                  // We'll also add the authentication table here
+                  $authQuery =  $mainDbConn->query("CREATE TABLE IF NOT EXISTS auth_table (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, userNames VARCHAR(255), userRole VARCHAR(255), userMail VARCHAR(255), userTel VARCHAR(255), userPass VARCHAR(255))");
+
+                  if($authQuery){
+                    session_destroy();
+                    header("Location: ../index.html?InstCreatedSuccess");
+                  }
+                  else{
+                    session_destroy();
+                    header("Location: ../index.html?AuthTableFails");
+                  }
+
+
                 }
                 elseif (!$InsertQuery) {
                     ?>
@@ -131,7 +142,7 @@ else{
 
                       $newDbConn = new mysqli($serverName, $username, $password, "interappconn");
 
-                      $deleteRecord = "DROP * from institutions where uniDatabaseID = $newDb";
+                      $deleteRecord = "DROP * from institutions where uniInit = $newDb";
 
                       $newDbConn->query($deleteRecord);
             ?>
@@ -143,6 +154,7 @@ else{
 
             session_destroy();
             mysqli_close($newDbConn);
+            close();
             header("Location: ../index.html?DatabaseCreationError");
           }
 
@@ -155,6 +167,7 @@ else{
         //If server is unreachable, return error
         die("Server Connection failed: ". $newDbConn->connect_error);
         session_destroy();
+        close();
         header("Location: ../index.html?newDbConnectError");
       }
 

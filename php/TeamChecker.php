@@ -29,6 +29,7 @@ if (isset($_SESSION)) {
 
       }
       else{
+  
         header("Location: ../index.html?queryFail");
       }
 

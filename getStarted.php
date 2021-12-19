@@ -56,7 +56,7 @@
             Each will cause everything else to display none.
           -->
 
-            <form id="Uni_Login_Form" action="php/auth.php" method="post">
+            <form id="Uni_Login_Form" action="php/auth/login.php" method="post">
               <h2 class="auth_form_message">Let's get you logged in</h2><br>
 
               <label for="uniQuery">Search for your institution below</label><br><br>
@@ -94,7 +94,7 @@
 
             </form>
 
-            <form id="Uni_Create_Form" action="php/auth.php" method="post">
+            <form id="Uni_Create_Form" action="php/auth/create.php" method="post">
               <h2 class="auth_form_message_create">Create Account</h2>
 
               <label for="uniQuery">Search for your institution below</label>
@@ -143,7 +143,7 @@
 
             </form>
 
-            <form id="Uni_Reset_Form" action="#" method="post">
+            <form id="Uni_Reset_Form" action="php/auth/reset.php" method="post">
               <h2 class="auth_form_message">Reset your Password</h2><br>
 
               <input type="search" name="uniQuery" list="uniList" placeholder="Type in your university here ..." required> <br><br>

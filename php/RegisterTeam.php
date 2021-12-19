@@ -60,49 +60,20 @@ require 'serverConnector.php';
                          // Insert the new organization as a new record
                          // Since it's a new record
 
-                         $InsertStmt = $serverConn->prepare("INSERT INTO institutions(uniName,uniInit,uniDatabaseID,uniAdmin,uniURL) VALUES(?,?,?,?,?)");
+                         $InsertStmt = $serverConn->prepare("INSERT INTO institutions(uniName,uniInit,uniAdmin,uniURL) VALUES(?,?,?,?)");
 
-                         // Inorder to insert the uni ID , we need to create it first
-                         //To generate the unique ID for a database, we first create the random item
-                         // I opted for taking the uni name and removing the whitespaces then appending an integer to its end
-                         // Below I have removed the whitespace
-                         $uniNm = str_replace(' ', '', $uniName);
-                         // I then generated an integer ranging between 0 and 99
-                         $randomInt = rand(0,99);
-                         // I then converted it to a string
-                         $randStr = strval($randomInt);
-                         // I then append or merge the uniName to the random integer
-                         $uniDB =  strtolower($uniNm.$randStr);
-
-                         //We would want to make sure that the created ID is not already in the table as it acts as a unique reference to the database of an Institutions
-
-                         $ConfirmDbIdUnique = mysqli_query($serverConn, "SELECT uniDatabaseID FROM institutions WHERE uniDatabaseID = '.$uniDB.' LIMIT 1");
-
-                         $confRes = mysqli_fetch_array($ConfirmDbIdUnique);
-
-                         //If it exists, we repeat the random creator and generate a new ID and check again as below
-                         // When the below becomes false, then the ID is added to the database
-                         while ($confRes) {
-                           // I again generated an integer ranging between 0 and 99
-                           $randomInt = rand(0,99);
-                           // I then converted it to a string
-                           $randStr = strval($randomInt);
-                           // I then append or merge the uniName to the random integer
-                           $uniDB = strtolower($uniNm.$randStr);
-
-                         }
-
-                         $InsertStmt->bind_param("sssss",$uniName,$uniInit,$uniDB,$uniAdmins,$uniURL);
+                         $InsertStmt->bind_param("ssss",$uniName,$uniInit,$uniAdmin,$uniURL);
 
                          $InsertStmt->execute();
+                         $InsertStmt->store_result();
 
                          //At this point, a new entry has been made into the main table and we need to create a matching new database
                          //In order to do so, we need to carry over the new database name/ ID to the new db creator as Below
 
 
-                         $_SESSION['NewDbID'] = $uniDB;
+                         $_SESSION['NewDbID'] = $uniInit;
                          $_SESSION['uniName']= $uniName;
-                         $_SESSION['uniAdmin'] = $uniAdmins;
+                         $_SESSION['uniAdmin'] = $uniAdmin;
                          mysqli_close($serverConn);
 
                          // We then go over to the new file to connect it to our server
@@ -120,31 +91,20 @@ require 'serverConnector.php';
                        // Institution does not exist
                        // What we want to do is insert a record for that institution
 
-                       $InsertStmt = $serverConn->prepare("Insert into institutions(uniName,uniInit,uniDatabaseID,uniAdmin,uniURL) values(?,?,?,?,?)");
+                       $InsertStmt = $serverConn->prepare("Insert into institutions(uniName,uniInit,uniAdmin,uniURL) values(?,?,?,?,?)");
 
-                       // Inorder to insert the uni ID , we need to create it first
-                       //To generate the unique ID for a database, we first create the random item
 
-                       // I opted for taking the uni name and removing the whitespaces then appending an integer to its end
-                       // Below I have removed the whitespace
-                       $uniNm = str_replace(' ', '', $uniName);
-                       // I then generated an integer ranging between 0 and 99
-                       $randomInt = rand(0,99);
-                       // I then converted it to a string
-                       $randStr = strval($randomInt);
-                       // I then append or merge the uniName to the random integer and make everything lowercase
-                       $uniDB = strtolower($uniNm.$randStr);
 
 
 
 
                        //We then bind the data to the prepared insert statement
 
-                       $InsertStmt->bind_param('sssss',$uniName,$uniInit,$uniDB,$uniAdmins,$uniWebsite);
+                       $InsertStmt->bind_param('ssss',$uniName,$uniInit,$uniAdmins,$uniWebsite);
 
                        $InsertStmt->execute();
 
-                       $_SESSION['NewDbID'] = $uniDB;
+                       $_SESSION['NewDbID'] = $uniInit;
                        $_SESSION['uniName']= $uniName;
                        $_SESSION['uniAdmin'] = $uniAdmins;
                        mysqli_close($serverConn);
@@ -152,6 +112,7 @@ require 'serverConnector.php';
                        echo "string";
 
                        include "NewTeamCreator.php";
+                       close();
 
 
                    }

@@ -10,15 +10,23 @@ require 'chatConnector.php';
 
 $sender = $_SESSION['userMail'];
 
-$countSql = "SELECT COUNT(*) FROM chats WHERE sender='$sender'";
-$countStmt = mysqli_query($chatConn,$countSql);
+$countStmt = $chatConn->prepare("SELECT COUNT(*) FROM chats WHERE sender= ? ");
+$countStmt->bind_param('s',$sender);
+$countStmt->execute();
+$countRes = $countStmt->get_result();
 
-if ($countStmt) {
+if ($countRes) {
   $selectSql = "SELECT * FROM chats WHERE sender='$sender'";
   $selectStmt = mysqli_query($chatConn,$selectSql);
 
   if ($selectStmt) {
     $chatRow = $selectStmt;
+
+    foreach ($chatRow as $key) {
+
+
+
+    }
   }
   else {
     ?>

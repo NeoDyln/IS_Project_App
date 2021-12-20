@@ -5,6 +5,8 @@
   require 'php/MainDatabaseCreator.php';
   require 'php/TeamChecker.php';
 
+  if(session_status() == PHP_SESSION_ACTIVE) session_destroy();
+
   if(session_status() !== PHP_SESSION_ACTIVE) session_start();
   elseif(session_status() === PHP_SESSION_NONE) session_start();
 

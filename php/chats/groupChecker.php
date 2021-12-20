@@ -14,7 +14,11 @@
     // We'll use a for loop to pull information about the users present
   } else {
     // Thus should be unreachable
-    echo "This should be unreachable. It simply means there are no registered groups";
+    ?>
+      <script type="text/javascript">
+        alert("Currently no groups exist");
+      </script>
+    <?php
   }
 
 ?>

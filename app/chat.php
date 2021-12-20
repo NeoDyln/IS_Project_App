@@ -2,6 +2,7 @@
 
 if(session_status() !== PHP_SESSION_ACTIVE) session_start();
 if(session_status() === PHP_SESSION_NONE) session_start();
+
 $userMail = $_SESSION['userMail'];
 $uniQuery = $_SESSION['uniQuery'];
 
@@ -11,6 +12,16 @@ require '../php/chats/groupChecker.php';
 require '../php/chats/pullChatsUsers.php';
 require '../php/chats/newChat.php';
 
+if (isset($_POST['logOut'])) {
+  session_destroy();
+
+  ?>
+    <script type="text/javascript">
+      alert("Log out successful");
+    </script>
+  <?php
+  header('Location: ../index.html');
+}
 
 ?>
 <!DOCTYPE html>
@@ -29,8 +40,10 @@ require '../php/chats/newChat.php';
     <div id="header">
       <h2 id="introtext">Welcome <?php echo $uniQuery ?></h2>
       <p id="userName"><?php echo $row['userNames']; ?></p>
+      <form class="logOff" action="#" method="post">
+        <button type="submit" id="logOff" name="logOut">Log Out</button>
+      </form>
 
-      <button type="submit" id="logOff" name="logOut">Log Out</button>
     </div>
     <div id="chats">
       <div id="peer">
@@ -47,7 +60,7 @@ require '../php/chats/newChat.php';
             ?>
           </datalist>
 
-          <input type="submit" name="startNewChat" value="Start Chat">
+          <input type="submit" id="userListSearchBtn" name="startNewChat" value="Start Chat">
         </form>
 
         <span id="chat">
@@ -55,15 +68,30 @@ require '../php/chats/newChat.php';
           <!-- For each chat, we'll make a query to the database -->
           <?php
             foreach($chatRow as $row){
+              // We then want to retrieve the user name of each chat
+              $curRec = $row['recipient'];
+              $recName = $chatConn->prepare("SELECT * FROM auth_table WHERE userMail = ? ");
+              $recName->bind_param('s',$curRec);
+              $recName->execute();
+              $resRecName = $recName->get_result();
+              $resRecNames = $resRecName->fetch_assoc();
+
+              if (!$resRecNames) {
+                ?>
+                  <script type="text/javascript">
+                    alert("Failed to retrieve userName");
+                  </script>
+                <?php
+              }
               ?>
-              <form id="userchatBar" action="#" method="post">
+              <form id="userchatBar" action="chatView.php" method="post">
 
                   <input type="hidden" name="recipient" value="<?php echo $row['recipient'];?>">
                   <input type="hidden" name="sender" value="<?php echo $_SESSION['userMail'];  ?>">
+                  <input type="hidden" name="recipName" value="<?php echo $resRecNames['userNames'];?>">
                   <img src="../Images/user.png" id="userImg" alt="">
-                  <p id="peerUser"><?php echo $row['recipient'];  ?></p>
-                  <p id="lastChat"><?php echo $row['message'];  ?></p>
-                  <input type="submit" id="chatBtn" name="openChat" value="Chat" onclick="showChat()">
+                  <p id="peerUser" name="recipName" ><?php echo $resRecNames['userNames'];  ?></p>
+                  <input type="submit" id="chatBtn" name="openChat" value="Chat">
 
 
               </form>
@@ -73,7 +101,7 @@ require '../php/chats/newChat.php';
             }
           ?>
 
-          <p>You don't have other chats. Search on the search bar above to start one</p>
+          <p id="noChatsMesss">You don't have other chats. Search on the search bar above to start one</p>
 
 
         </span>
@@ -86,7 +114,7 @@ require '../php/chats/newChat.php';
           <datalist id="userList">
             <option value=""></option>
           </datalist>
-          <input type="submit" name="joinNewGroup" value="Join Group">
+          <input type="submit" id="groupListBtn" name="joinNewGroup" value="Join Group">
         </form>
 
 
@@ -100,18 +128,10 @@ require '../php/chats/newChat.php';
 
       </div>
     </div>
-    <div id="textView">
-      <span id="head">
-        <p id="recName">Recip Name</p>
-        <img src="../Images/exit.png" id="exitChat" alt="">
-      </span>
-      <span id="message"></span>
 
-      <form id="sendText" action="../php/chats/chatAlgo.php" method="post">
-        <input type="text" id="messageBar" name="message" placeholder="Enter Text">
-        <input type="submit" id="sendTxt" name="sendTxt" value="Send">
-      </form>
 
-    </div>
+
+
+    </script>
   </body>
 </html>

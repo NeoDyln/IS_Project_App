@@ -37,7 +37,14 @@ include '../serverConnector.php';
         if ($checkRow) {
           // If the check is true
           mysqli_close($authConn);
-          header('Location: ../../getStarted.php?UserExistsLogIn');
+
+          ?>
+            <script type="text/javascript">
+              alert("The user with the email you gave is already registered. Log in instead");
+            </script>
+          <?php
+
+          header('Location: ../../getStarted.php');
         }
         else{
           $role = "Student";

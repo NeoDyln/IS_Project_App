@@ -14,264 +14,209 @@ body, html{
 
 
 
-#header{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 70px;
-  background-color: #FAEDF0;
-  display: none;
-}
 
-#introtext{
-  position: absolute;
-  top: 7%;
-  left: 1%;
-  font-size: 18px;
-  font-weight: bold;
-  display: block;
+  #header{
+    position: sticky;
+    z-index: 4;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #FAEDF0;
+    display: block;
+  }
 
-}
-#userName{
-  position: absolute;
-  top: 40%;
-  left: 3%;
-  font-size: 15px;
-  display: block;
+  #introtext{
+    position: absolute;
+    top: 7%;
+    left: 1%;
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
 
-}
+  }
+  #userName{
+    position: absolute;
+    top: 40%;
+    left: 3%;
+    font-size: 15px;
+    display: block;
 
-#logOff{
-  position: absolute;
-  top: 40%;
-  right: 4%;
-  font-size: 15px;
-}
+  }
 
-
-
-#chats{
-  position: absolute;
-  top: 70px;
-  height: 698px;
-  width: 100%;
-  display: none;
-
-}
-
-#peer{
-  position: relative;
-  height: 50%;
-  display: block;
-}
-#peerIntro{
-  position: absolute;
-  left: 2%;
-}
-
-#userSearch{
-  position: absolute;
-  width: 90%;
-  top: 13%;
-  left: 2%;
-  border: 0;
-  padding: 4px;
-  margin: 0;
-}
-
-#userList{
-  border-radius: 20px;
-  border: 0.11px solid black;
-  width: 70%;
-  padding: 4px 6px;
-  background-color: #FAEDF0;
-}
+  #logOff{
+    position: absolute;
+    top: 40%;
+    right: 4%;
+    font-size: 15px;
+  }
 
 
 
-#chat{
-  position: absolute;
-  left: 2%;
-  width: 90%;
-  top: 25%;
-  border: 0;
-  padding: 4px;
-  margin: 0;
-  height: 250px;
-  overflow-y: scroll;
-}
+  #chats{
+    position: absolute;
+    top: 70px;
+    height: 698px;
+    width: 100%;
+    display: block;
 
-#userchatBar{
-  margin: 0;
-  padding: 2px 0;
-  border: 0;
-}
+  }
 
-#userImg{
-  width: 64px;
-  float: left;
-  position: relative;
-  padding: 2px 4px;
-}
-#peerUser{
-  padding: 4px;
-  margin: 8px;
-  font-size: 12px;
-}
-#lastChat{
-  font-size: 12px;
-  padding: 4px;
-  margin: 8px;
-}
-#chatBtn{
-  position: absolute;
-  top: 0;
-}
+  #peer{
+    position: relative;
+    height: 40%;
+    display: block;
+  }
+  #peerIntro{
+    position: absolute;
+    left: 2%;
+  }
 
+  #userSearch{
+    position: absolute;
+    width: 90%;
+    top: 13%;
+    left: 2%;
+    border: 0;
+    padding: auto 4%;
+    margin: 0;
+  }
 
-
-
-
-#group{
-  position: relative;
-  height: 50%;
-  display: block;
-}
-#groupIntro{
-  position: absolute;
-  left: 2%;
-}
-
-#groupSearch{
-  position: absolute;
-  width: 90%;
-  top: 13%;
-  left: 2%;
-  border: 0;
-  padding: 4px;
-  margin: 0;
-}
-
-#groupList{
-  border-radius: 20px;
-  border: 0.11px solid black;
-  width: 70%;
-  padding: 4px 6px;
-  background-color: #FAEDF0;
-}
-
-#group_list{
-  position: absolute;
-  left: 2%;
-  width: 90%;
-  top: 25%;
-  border: 0;
-  padding: 4px;
-  margin: 0;
-  height: 250px;
-  overflow-y: scroll;
-
-}
-
-#groupchatBar{
-  margin: 0;
-  padding: 2px 0;
-  border: 0;
-}
-
-#groupImg{
-  width: 64px;
-  float: left;
-  position: relative;
-  padding: 2px 4px;
-}
-#groupName{
-  padding: 4px;
-  margin: 8px;
-  font-size: 15px;
-}
-#lastGChat{
-  font-size: 12px;
-  padding: 4px;
-  margin: 8px;
-}
+  #userList{
+    border-radius: 20px;
+    border: 0.11px solid black;
+    width: 65%;
+    padding: 4px 6px;
+    background-color: #FAEDF0;
+  }
+  #userListSearchBtn{
+    border-radius: 20px;
+    border: 0.11px solid black;
+    width: 30%;
+    max-width: 100px;
+    padding: 4px 3px;
+    background-color: #FAEDF0;
+  }
 
 
 
-#textView{
-  position: absolute;
-  top: 0;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  width: 100%;
-  height: 768px;
-  display: block;
-}
+  #chat{
+    position: absolute;
+    left: 2%;
+    width: 90%;
+    top: 25%;
+    border: 0;
+    padding: 4px;
+    margin: 0;
+    height: 250px;
+    overflow-y: scroll;
+  }
 
-#head{
-  position: absolute;
-  top: 0;
-  height: 70px;
-  width: 100%;
-  background-color: #FAEDF0;
-}
+  #userchatBar{
+    margin: 0;
+    width: 95%;
+    height: 50px;
+    max-width: 380px;
+    border: 0;
+    display: block;
+  }
 
-#recName{
-  position: absolute;
-  top: 10px;
-  left: 4px;
-  width: 100px;
-  padding: 2px 4px;
-}
-
-#exitChat{
-  float: right;
-  width: 32px;
-  padding: 18px 14px;
-}
-
-#message{
-  position: absolute;
-  top: 70px;
-  height: 630px;
-  width: 100%;
-
-}
+  #userImg{
+    width: 32px;
+    float: left;
+    position: relative;
+    padding: 2px 4px;
+  }
+  #peerUser{
+    padding: 4px;
+    margin: 8px;
+    font-size: 12px;
+  }
+  #lastChat{
+    font-size: 12px;
+    padding: 4px;
+    margin: 8px;
+  }
+  #chatBtn{
+    position: relative;
+    float: right;
+    bottom: 25px;
+  }
+  #noChatsMesss{
+    font-size: 12px;
+  }
 
 
 
 
-#sendText{
-  position: relative;
-  top: 700px;
-  height: 68px;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  border: 0;
-  background-color: black;
-}
-#messageBar{
-  position: absolute;
-  top: 12px;
-  left: 8px;
-  width: 70%;
-  height: 40px;
-  margin: 0;
-  padding: 2px 8px;
-  border: 0;
-  border-radius: 20px;
 
-}
-#sendTxt{
-  position: absolute;
-  top: 12px;
-  left: 80%;
-  width: 18%;
-  height: 40px;
-  margin: 0;
-  padding: 2px 18px;
-  border: 0;
-  border-radius: 20px;
-}
+  #group{
+    position: relative;
+    height: 40%;
+    display: block;
+  }
+  #groupIntro{
+    position: absolute;
+    left: 2%;
+  }
+
+  #groupSearch{
+    position: absolute;
+    width: 90%;
+    top: 13%;
+    left: 2%;
+    border: 0;
+    padding: 4px;
+    margin: 0;
+  }
+
+  #groupList{
+    border-radius: 20px;
+    border: 0.11px solid black;
+    width: 65%;
+    padding: 4px 6px;
+    background-color: #FAEDF0;
+  }
+  #groupListBtn{
+    border-radius: 20px;
+    border: 0.11px solid black;
+    width: 30%;
+    padding: 4px 6px;
+    max-width: 100px;
+    background-color: #FAEDF0;
+  }
+
+  #group_list{
+    position: absolute;
+    left: 2%;
+    width: 90%;
+    top: 25%;
+    border: 0;
+    padding: 4px;
+    margin: 0;
+    height: 250px;
+    overflow-y: scroll;
+
+  }
+
+  #groupchatBar{
+    margin: 0;
+    padding: 2px 0;
+    border: 0;
+  }
+
+  #groupImg{
+    width: 64px;
+    float: left;
+    position: relative;
+    padding: 2px 4px;
+  }
+  #groupName{
+    padding: 4px;
+    margin: 8px;
+    font-size: 15px;
+  }
+  #lastGChat{
+    font-size: 12px;
+    padding: 4px;
+    margin: 8px;
+  }

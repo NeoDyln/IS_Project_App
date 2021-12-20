@@ -154,7 +154,6 @@ else{
 
             session_destroy();
             mysqli_close($newDbConn);
-            close();
             header("Location: ../index.html?DatabaseCreationError");
           }
 

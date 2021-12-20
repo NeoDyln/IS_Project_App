@@ -23,19 +23,25 @@
 
 
         // Get data from table for log in assosciated with provided mail
-        $logIn = "SELECT * FROM auth_table WHERE userMail = '$userMail'";
-        $logInQuery = mysqli_query($authConn, $logIn);
+        $logIn = $authConn->prepare("SELECT * FROM auth_table WHERE userMail = ?");
+        $logIn->bind_param('s',$userMail);
+        $logIn->execute();
+        $logInQuery = $logIn->get_result();
 
 
         // Check if there's any data. If no data is there, check will be false
-        if ($logInQuery == FALSE ) {
+        if (!$logInQuery) {
           // Return an error message
-          mysqli_close($authConn);
-          header('Location: ../../getStarted.php?NoUserExists');
+          ?>
+            <script type="text/javascript">
+              alert("User with that mail does not exist");
+            </script>
+          <?php
+          header('Location: ../../getStarted.php');
         }
         else {
           // We collect the info
-          $logInRes = mysqli_fetch_array($logInQuery);
+          $logInRes = $logInQuery->fetch_assoc();
 
 
           // Now we cross check the pasword by hashing the password password_verify which returns true if true
@@ -44,18 +50,31 @@
           if ($passWordTest == FALSE) {
 
             // Return a wrong password error
-            mysqli_close($authConn);
-            header('Location: ../../getStarted.php?WrongPassword'.$logInRes['userPass'].'');
+            ?>
+              <script type="text/javascript">
+                alert("Incorrect Password");
+              </script>
+            <?php
+            header('Location: ../../getStarted.php');
 
 
           }
           else {
             // Log In success....Pass in user Mail and redirect to chat.php
+            mysqli_close($authConn);
+            ?>
+              <script type="text/javascript">
+                alert("Log in was successful");
+              </script>
+            <?php
+
+            // At this point,, the user has successfully logged in
             $_SESSION['userMail'] = $userMail;
             $_SESSION['uniQuery'] = $uniQuery;
-            mysqli_close($authConn);
-            echo "Success Login";
             header('Location: ../../app/chat.php');
+            // echo $_SESSION['userMail'];
+            // header('Location: ../../index.html');
+
           }
 
 

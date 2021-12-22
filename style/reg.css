@@ -21,7 +21,7 @@ a{
 }
 
 @media (min-width: 270px) and (max-width:425px) {
-  .uniChecker{
+  #uniChecker{
     position: absolute;
     display: none;
     top: 10%;
@@ -78,7 +78,7 @@ a{
     border-radius: 14px;
   }
 
-  .registration{
+  #registration{
     position: absolute;
     display: block;
     top: 15%;
@@ -101,7 +101,7 @@ a{
     padding: 1% 0;
     height: 15px;
   }
-  .registration label, input[type=text],input[type=email],input[type=url]{
+  #registration label, input[type=text],input[type=email],input[type=url]{
     position: relative;
     font-size: 9px;
     left: 3.5%;
@@ -112,7 +112,7 @@ a{
     padding: 0 1.2%;
     height: 2.5em;
   }
-  .registration input[type=submit]{
+  #registration input[type=submit]{
     position: relative;
     bottom: 2%;
     left: 35%;
@@ -168,7 +168,7 @@ a{
 }
 
 @media (min-width: 425px) and (max-width:768px) {
-  .uniChecker{
+  #uniChecker{
     position: absolute;
     display: none;
     top: 20%;
@@ -225,9 +225,9 @@ a{
     border-radius: 14px;
   }
 
-  .registration{
+  #registration{
     position: absolute;
-    display: none;
+    display: block;
     top: 15%;
     margin: 0 26%;
     width: 45%;
@@ -248,7 +248,7 @@ a{
     padding: 1% 0;
     height: 15px;
   }
-  .registration label, input[type=text],input[type=email],input[type=url]{
+  #registration label, input[type=text],input[type=email],input[type=url]{
     position: relative;
     left: 3.5%;
     width: 90%;
@@ -258,7 +258,7 @@ a{
     padding: 0 1.2%;
     height: 2.5em;
   }
-  .registration input[type=submit]{
+  #registration input[type=submit]{
     position: relative;
     bottom: 2%;
     left: 35%;
@@ -314,9 +314,9 @@ a{
 }
 
 @media (min-width: 769px) and (max-width:1024px) {
-  .uniChecker{
+  #uniChecker{
     position: absolute;
-    display: block;
+    display: none;
     top: 20%;
     margin: 2% 26%;
     width: 40%;
@@ -367,9 +367,9 @@ a{
     border-radius: 14px;
   }
 
-  .registration{
+  #registration{
     position: absolute;
-    display: none;
+    display: block;
     top: 15%;
     margin: 0 26%;
     width: 45%;
@@ -389,7 +389,7 @@ a{
     padding: 1% 0;
     height: 15px;
   }
-  .registration label, input[type=text],input[type=email],input[type=url]{
+  #registration label, input[type=text],input[type=email],input[type=url]{
     position: relative;
     left: 3.5%;
     width: 90%;
@@ -399,7 +399,7 @@ a{
     padding: 0 1.2%;
     height: 3em;
   }
-  .registration input[type=submit]{
+  #registration input[type=submit]{
     position: relative;
     bottom: 2%;
     left: 35%;
@@ -455,7 +455,7 @@ a{
 }
 
 @media (min-width: 1025px) {
-  .uniChecker{
+  #uniChecker{
     position: absolute;
     display:  none;
     top: 20%;
@@ -517,7 +517,7 @@ a{
     border-radius: 14px;
   }
 
-  .registration{
+  #registration{
     position: absolute;
     display: block;
     top: 15%;
@@ -540,7 +540,7 @@ a{
     padding: 1% 0;
     height: 5px;
   }
-  .registration label, input[type=text],input[type=email],input[type=url]{
+  #registration label, input[type=text],input[type=email],input[type=url]{
     position: relative;
     left: 3.5%;
     width: 90%;
@@ -550,7 +550,7 @@ a{
     padding: 0 1.2%;
     height: 3em;
   }
-  .registration input[type=submit]{
+  #registration input[type=submit]{
     position: relative;
     bottom: 2%;
     left: 35%;

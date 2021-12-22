@@ -10,40 +10,36 @@ require 'chatConnector.php';
 
 $sender = $_SESSION['userMail'];
 
-$countStmt = $chatConn->prepare("SELECT COUNT(*) FROM chats WHERE sender= ? ");
-$countStmt->bind_param('s',$sender);
-$countStmt->execute();
-$countRes = $countStmt->get_result();
+  $select = "SELECT * FROM chats WHERE (sender='$sender') OR (recipient='$sender')";
 
-if ($countRes) {
-  $selectSql = "SELECT * FROM chats WHERE sender='$sender'";
-  $selectStmt = mysqli_query($chatConn,$selectSql);
+  $selectQuery = $chatConn->query($select);
+//
+// $countStmt = $chatConn->prepare("SELECT COUNT(*) FROM chats WHERE (sender=?) OR (recipient=?)");
+// $countStmt->bind_param('ss',$sender,$sender);
+// $countStmt->execute();
+// $countRes = $countStmt->get_result();
+//
+// if ($countRes) {
+//   $selectStmt = $chatConn->prepare("SELECT * FROM chats WHERE (sender=?) OR (recipient=?)");
+//   $selectStmt->bind_param('ss',$sender,$sender);
+//   $selectStmt->execute();
+//   $selectRes = $selectStmt->get_result();
+//   $selectRecords = $selectRes->fetch_all(MYSQLI_ASSOC);
+//
+//   if ($selectRecords) {
+//     $chatRows = $selectRecords;
+//
+//
+//   }
+//   else {
+//     $chatRows = "No Chats";
+//   }
+// }
+// else{
 
-  if ($selectStmt) {
-    $chatRow = $selectStmt;
-
-    foreach ($chatRow as $key) {
-
-
-
-    }
-  }
-  else {
-    ?>
-      <script type="text/javascript">
-        alert("You have no chats");
-      </script>
-    <?php
-  }
-}
-else{
-  ?>
-    <script type="text/javascript">
-      alert("You have no chats");
-    </script>
-  <?php
-}
-
+//   $chatRows = "No Chats";
+// }
+//
 
 
 

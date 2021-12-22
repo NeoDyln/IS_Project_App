@@ -35,7 +35,7 @@ include 'serverConnector.php';
             if ($tableCreate) {
 
               //  We then check if test data exists in the mysql_list_tables
-              $testName = "Test Uni";
+              $testName = "Test Uni (Do not use)";
               $testData = $serverConn->prepare("SELECT uniName FROM institutions WHERE uniName= ?");
               $testData->bind_param('s', $testName);
               $testData->execute();

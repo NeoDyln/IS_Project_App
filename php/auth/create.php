@@ -54,6 +54,34 @@ include '../serverConnector.php';
           $insertCreate->bind_param("sssss",$userNames,$userMail,$userTel,$userPass,$role);
           $insertCreate->execute();
 
+          $groupChatTable = "CREATE TABLE IF NOT EXISTS groupchats (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, groupName VARCHAR(255), sender VARCHAR(255), message VARCHAR(255), timeSent DateTime)";
+          $groupChatQuery = mysqli_query($authConn, $groupChatTable);
+
+          if ($groupChatQuery) {
+
+            $insertGroup = $authConn->prepare("INSERT INTO groupchats (groupName, sender, message, timeSent) VALUES (?,?,?,?)");
+              $curTime = date('Y/m/d h:i:s');
+              $message = "User ".$userMail." has joined";
+            $insertGroup->bind_param("ssss",$uniQuery,$userMail,$message,$curTime);
+            $insertGroup->execute();
+
+            if ($insertGroup) {
+              $_SESSION['userMail'] = $userMail;
+              $_SESSION['uniQuery'] = $uniQuery;
+              mysqli_close($authConn);
+
+              header('Location: ../../app/chat.php');
+            }
+            else{
+              ?>
+                <script type="text/javascript">
+                  alert("Group Dta error");
+                </script>
+              <?php
+            }
+
+          }
+
 
           $_SESSION['userMail'] = $userMail;
           $_SESSION['uniQuery'] = $uniQuery;

@@ -30,7 +30,7 @@
     <body>
 
 
-      <form class="uniChecker" action="#" method="post">
+      <form id="uniChecker" action="#" method="post">
         <h3 id="uniSearchL">First, try and find your organization below</h3>
         <input type="search" id="uniSearch" name="UniSearch" list="UniList" placeholder="Type here">
         <datalist id="UniList">
@@ -45,12 +45,13 @@
         </datalist>
 
         <p id="UniMissErr">If you cannot find it here, then you can safely proceed to register below</p>
-        <input type="submit" id="uniQuerySubmit" onclick="showRegForm()" value="Next">
+        <input type="submit" id="uniQuerySubmit" onclick="showRegPage()" value="Next">
+
       </form>
 
 
 
-      <form class="registration" action="php/RegisterTeam.php" method="post">
+      <form id="registration" action="php/RegisterTeam.php" method="post">
         <h3 id="RegUniFormTitle">Let's get you registered then</h3>
         <input type="text" name="uniName" id="uniname" placeholder="Enter your organization/ team name">
         <input type="text" name="uniInit" id="uniinitials" placeholder="Enter your organization's /team's initials if any">
@@ -62,12 +63,12 @@
 
       </form>
 
-        <!-- <a href="index.php"> <button type="button" id="backButton" name="backButton">Go back</button> </a>
-        <a href="#"><button type="button" id="nexButton" name="regButton">Next</button></a>
-        <a href="#"><button type="button" id="nexButton" name="regButton">Next</button></a> -->
 
 
 
+      <a href="index.html"> <button type="button" id="backButton" name="backButton">Go back to home screen</button> </a>
+
+      <script type="text/javascript" src="scripts/register.js"></script>
     </body>
   </html>
 

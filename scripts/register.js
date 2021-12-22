@@ -1,6 +1,20 @@
-var counter = document.getElementById('countAdmin').value;
+function showRegPage(){
+
+      document.getElementById('registration').style.display = "block";
+      hideCheck();
+}
+
+function hideCheck(){
+  document.getElementById('uniChecker').style.display = "none";
+}
 
 
-for (var i  = 0; i < counter;  i++) {
+function showteamPage(){
 
+    document.getElementById('uniChecker').style.display = "block";
+    hideReg();
+}
+
+function hideReg(){
+  document.getElementById('registration').style.display = "none";
 }

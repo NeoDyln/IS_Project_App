@@ -98,6 +98,8 @@ else{
                   $authQuery =  $mainDbConn->query("CREATE TABLE IF NOT EXISTS auth_table (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT, userNames VARCHAR(255), userRole VARCHAR(255), userMail VARCHAR(255), userTel VARCHAR(255), userPass VARCHAR(255))");
 
                   if($authQuery){
+
+                    
                     session_destroy();
                     header("Location: ../index.html?InstCreatedSuccess");
                   }

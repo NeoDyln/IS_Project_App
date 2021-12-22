@@ -17,7 +17,7 @@
   $groupChatQuery = mysqli_query($chatConn, $chatsTable);
 
   if ($groupChatQuery) {
-    // code...
+    
   }
   else{
     echo "Groups Chat table not created";

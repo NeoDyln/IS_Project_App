@@ -13,19 +13,22 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 
       require '../php/chats/chatConnector.php';
 
+        $sender = $_SESSION['sender'];
+      $groupName = $_SESSION['groupName'];
 
       if (isset($_POST['sendTxt'])) {
         // New message Logic
 
+
         $senderM = $_POST['senderMail'];
-        $recipientM = $_POST['recipientMail'];
+
         $message = mysqli_real_escape_string($chatConn, stripcslashes($_POST['message']));
         $date = $_POST['dateNow'];
 
         //New messages should be hashed
 
         // Prepared statement to insert data
-        $textSql = "INSERT INTO chats(sender,recipient,message,timeSent) VALUES('$senderM','$recipientM','$message','$date')";
+        $textSql = "INSERT INTO groupchats(groupName,sender,message,timeSent) VALUES('$groupName','$senderM','$message','$date')";
         $textStmt = $chatConn->query($textSql);
 
         if ($textStmt) {
@@ -46,11 +49,10 @@ if(session_status() === PHP_SESSION_NONE) session_start();
 
 // Exit chat Logic
 
-if (isset($_POST['exitChat'])) {
+if (isset($_POST['exitGroup'])) {
   // Delete current session data
   $_SESSION['sender'] = '';
-  $_SESSION['recipient'] = '';
-  $_SESSION['recName'] = '';
+  $_SESSION['groupName'] = '';
 
   // Exit current chat
   header('Location: chat.php');
@@ -76,9 +78,9 @@ if (isset($_POST['exitChat'])) {
   <body>
     <div id="textView">
       <span id="head">
-        <p id="recName"> <?php echo $_SESSION['recName']; ?> </p>
+        <p id="recName"> <?php echo $_SESSION['groupName']; ?> </p>
         <form class="exitChat" action="#" method="post">
-          <button type="submit" id="exitChatBtn" name="exitChat">Exit</button>
+          <button type="submit" id="exitChatBtn" name="exitGroup">Exit</button>
         </form>
 
       </span>
@@ -90,8 +92,8 @@ if (isset($_POST['exitChat'])) {
 
 
                   $sender = $_SESSION['sender'];
-                  $recipient = $_SESSION['recipient'];
-                  $recName = $_SESSION['recName'];
+
+                  $groupName = $_SESSION['groupName'];
 
                   ?>
                     <script type="text/javascript">
@@ -100,7 +102,7 @@ if (isset($_POST['exitChat'])) {
                   <?php
 
                   // Here, we should pull the messages of all the available texts between rec and sender above
-                  $mesSql = "SELECT * FROM chats WHERE sender='$sender' OR recipient ='$sender' ORDER BY 1 ASC";
+                  $mesSql = "SELECT * FROM groupchats";
                   $mesStmt = $chatConn->query($mesSql);
 
 
@@ -115,7 +117,7 @@ if (isset($_POST['exitChat'])) {
                               <li id="senBubble">
                                 <div>
                                   <p id="senMessage"><?php echo $curUserSender['message']; ?></p>
-                                  <p id="senMessageTime"><?php echo $curUserSender['timeSent']; ?></p>
+                                  <p id="senMessageTime"><?php echo $curUserSender['sender']; ?> at <?php echo $curUserSender['timeSent']; ?></p>
                                 </div>
                               </li>
                           <?php
@@ -125,7 +127,7 @@ if (isset($_POST['exitChat'])) {
                             <li id="recBubble">
                               <div >
                                 <p id="recMessage"><?php echo $curUserSender['message'];?></p>
-                                <p id="recMessageTime"><?php echo $curUserSender['timeSent']; ?></p>
+                                <p id="recMessageTime"><?php echo $curUserSender['sender']; ?> at <?php echo $curUserSender['timeSent']; ?></p>
                               </div>
                             </li>
 
@@ -158,8 +160,8 @@ if (isset($_POST['exitChat'])) {
       </span>
 
       <form id="sendText" action="#" method="post">
+        <input type="hidden" name="groupName" value="<?php echo $_SESSION['groupName']; ?>">
         <input type="hidden" name="senderMail" value="<?php echo $_SESSION['sender'];  ?>">
-        <input type="hidden" name="recipientMail" value="<?php echo $_SESSION['recipient'];  ?>">
         <input type="hidden" name="dateNow" value="<?php echo date('Y/m/d h:i:s');?>">
         <input type="text" id="messageBar" name="message" placeholder="Enter Text">
         <input type="submit" id="sendTxt" name="sendTxt" value="Send">

@@ -11,7 +11,12 @@ if (isset($_SESSION)) {
   $serverConn = new mysqli($serverName,$username,$password,$daB);
         // Two requests...Creation of Db and DB Select
     if ($serverConn->connect_error){
-        header("Location: ../index.html?serverConnError");
+        ?>
+          <script type="text/javascript">
+            alert("At the moment, no team is registered. Visit the site later");
+          </script>
+        <?php
+
     }
     else{
       $quer = "SELECT uniInit,uniName FROM institutions";
@@ -29,7 +34,7 @@ if (isset($_SESSION)) {
 
       }
       else{
-  
+
         header("Location: ../index.html?queryFail");
       }
 

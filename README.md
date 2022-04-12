@@ -1,5 +1,9 @@
 # IS_Project_App
  This is an Internal Social App that I created as part of my university requirements and as a practice program for myself.
+ 
+## App Info
+
+- Version: 0.1
 
 ## Features
 
